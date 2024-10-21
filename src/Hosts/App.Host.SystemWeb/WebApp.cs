@@ -1,16 +1,20 @@
-﻿using App.Host.Configuration;
+﻿using App.Api.Controllers;
+using App.Host.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 namespace App.Host.SystemWeb
 {
-    public class Startup
+    public class WebApp
     {
         public static void Configure(IApplicationBuilder applicationBuilder, IServiceCollection services)
         {
             //Add services 
-            services.AddControllers();
+            services.AddControllers().AddApplicationPart(typeof(ProductController).Assembly);
+
+            services.AddEndpointsApiExplorer();
+
             //builder.Services.AddSwaggerGen();
 
             ServiceRegistration.Register(services);
@@ -19,7 +23,6 @@ namespace App.Host.SystemWeb
 
             //applicationBuilder.MapControllers();
 
-            //app.UseRouting();
         }
     }
 }

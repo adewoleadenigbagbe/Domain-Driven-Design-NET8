@@ -9,7 +9,7 @@ namespace App.Host.SelfHost
         {
             var builder = WebApplication.CreateBuilder(args);
             var app = builder.Build();
-            Startup.Configure(builder);
+            WebApp.Configure(app);
         }
     }
 }

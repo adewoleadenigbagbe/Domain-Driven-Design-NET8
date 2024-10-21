@@ -14,7 +14,6 @@ namespace App.Host.Configuration.ServiceModules
         public static void RegisterDbServices(this IServiceCollection serviceCollection)
         {
             serviceCollection.AddDbContext<ReadAppContext, MySqlReadAppContext>(contextLifetime: ServiceLifetime.Transient, optionsLifetime: ServiceLifetime.Transient);
-
             serviceCollection.AddDbContext<ReadWriteAppContext, MySqlReadWriteAppContext>(contextLifetime: ServiceLifetime.Transient, optionsLifetime: ServiceLifetime.Transient);
         }
     }
