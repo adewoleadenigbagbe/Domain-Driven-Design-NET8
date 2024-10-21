@@ -17,7 +17,7 @@ namespace App.Data.Helpers
 
     public static class SequentialGuid
     {
-        private static readonly RNGCryptoServiceProvider _rng = new RNGCryptoServiceProvider();
+        private static readonly RNGCryptoServiceProvider _rng = new();
 
         public static Guid Create(SequentialGuidType guidType = SequentialGuidType.SequentialAsString)
         {

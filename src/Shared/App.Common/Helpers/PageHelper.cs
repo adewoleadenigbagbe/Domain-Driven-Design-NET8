@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq.Expressions;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace App.Common.Helpers
 {
@@ -29,7 +29,7 @@ namespace App.Common.Helpers
                 PageLength = pageSize,
                 TotalCount = totalCount,
                 TotalPage = totalPage,
-                Items = items.ToList()
+                Items = [.. items]
             };
 
             return result;

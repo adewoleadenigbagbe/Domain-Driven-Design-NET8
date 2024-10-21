@@ -9,9 +9,12 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="MediatR" Version="12.4.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Refit" Version="7.2.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Shared\App.Common\App.Common.csproj" />
     <ProjectReference Include="..\..\Shared\App.Data\App.Data.csproj" />
   </ItemGroup>
 

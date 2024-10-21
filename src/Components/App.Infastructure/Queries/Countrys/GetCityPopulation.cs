@@ -18,14 +18,9 @@ namespace App.Infastructure.Queries.Countrys
         {
         }
 
-        public class Handler : IRequestHandler<Query, CountryResponse>
+        public class Handler(ICountryApi countryApi) : IRequestHandler<Query, CountryResponse>
         {
-            private readonly ICountryApi _countryApi;
-
-            public Handler(ICountryApi countryApi)
-            {
-                _countryApi = countryApi;
-            }
+            private readonly ICountryApi _countryApi = countryApi;
 
             public async Task<CountryResponse> Handle(Query request, CancellationToken cancellationToken)
             {

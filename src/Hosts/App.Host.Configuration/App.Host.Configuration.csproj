@@ -8,11 +8,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    <PackageReference Include="Refit.HttpClientFactory" Version="7.2.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Components\App.Infastructure\App.Infastructure.csproj" />
     <ProjectReference Include="..\..\Shared\App.Data.MySQL\App.Data.MySQL.csproj" />
     <ProjectReference Include="..\..\Shared\App.Data\App.Data.csproj" />
   </ItemGroup>
-
 </Project>

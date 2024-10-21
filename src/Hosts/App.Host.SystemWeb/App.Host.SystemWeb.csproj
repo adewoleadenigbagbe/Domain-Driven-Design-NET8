@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\App.Host.Configuration\App.Host.Configuration.csproj" />
+  </ItemGroup>
+
+   <ItemGroup>
+     <FrameworkReference Include="Microsoft.AspNetCore.App" />
+   </ItemGroup>
+
 </Project>

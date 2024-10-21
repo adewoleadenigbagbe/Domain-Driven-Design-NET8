@@ -1,15 +1,20 @@
-﻿using App.Data.Contexts;
-using App.Data.MySQL;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Refit;
+using System.Collections.Specialized;
+using System.Configuration;
+
+using App.Host.Configuration.ServiceModules;
 
 namespace App.Host.Configuration
 {
-    public class ServiceRegistration
+    public static class ServiceRegistration
     {
-        public static void Register(IServiceCollection serviceCollection)
+        public static void Register(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddDbContext<ReadAppContext, MySqlReadAppContext>(
-                contextLifetime: ServiceLifetime.Transient, optionsLifetime: ServiceLifetime.Transient);
+            DbConnectionModule.RegisterDbServices(serviceCollection);
+            MediatRModule.RegisterMediatRServices(serviceCollection);
+            RefitModule.RegisterRefitServices(serviceCollection);
+            AutoMapperModule.RegisterAutomapperServices(serviceCollection);
         }
     }
 }

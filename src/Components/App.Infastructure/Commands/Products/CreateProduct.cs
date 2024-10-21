@@ -41,14 +41,9 @@ namespace App.Infastructure.Commands
         }
 
 
-        public class Handler : IRequestHandler<Request, Result>
+        public class Handler(ReadWriteAppContext readWriteAppContext) : IRequestHandler<Request, Result>
         {
-            private readonly ReadWriteAppContext _readWriteAppContext;
-
-            public Handler(ReadWriteAppContext readWriteAppContext)
-            {
-                _readWriteAppContext = readWriteAppContext;
-            }
+            private readonly ReadWriteAppContext _readWriteAppContext = readWriteAppContext;
 
             public async Task<Result> Handle(Request request, CancellationToken cancellationToken)
             {

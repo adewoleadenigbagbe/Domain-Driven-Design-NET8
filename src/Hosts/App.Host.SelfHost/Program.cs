@@ -1,4 +1,5 @@
 ﻿using App.Host.Configuration;
+using App.Host.SystemWeb;
 
 namespace App.Host.SelfHost
 {
@@ -7,8 +8,8 @@ namespace App.Host.SelfHost
         static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            ServiceRegistration.Register(builder.Services);
-
+            var app = builder.Build();
+            Startup.Configure(builder);
         }
     }
 }

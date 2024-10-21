@@ -34,17 +34,11 @@ namespace App.Infastructure.Queries.Products
         }
 
 
-        public class Handler : IRequestHandler<Query, Result>
+        public class Handler(ReadAppContext readAppContext, IMapper mapper) : IRequestHandler<Query, Result>
         {
-            private readonly ReadAppContext _readAppContext;
+            private readonly ReadAppContext _readAppContext = readAppContext;
 
-            private readonly IMapper _mapper;
-
-            public Handler(ReadAppContext readAppContext, IMapper mapper)
-            {
-                _readAppContext = readAppContext;
-                _mapper = mapper;
-            }
+            private readonly IMapper _mapper = mapper;
 
             public async Task<Result> Handle(Query request, CancellationToken cancellationToken)
             {

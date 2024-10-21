@@ -31,14 +31,9 @@ namespace App.Infastructure.Queries.Products
             public HttpStatusCode StatusCode { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Result>
+        public class Handler(ReadAppContext readAppContext) : IRequestHandler<Query, Result>
         {
-            private readonly ReadAppContext _readAppContext;
-
-            public Handler(ReadAppContext readAppContext)
-            {
-                _readAppContext = readAppContext;
-            }
+            private readonly ReadAppContext _readAppContext = readAppContext;
 
             public async Task<Result> Handle(Query request, CancellationToken cancellationToken)
             {
