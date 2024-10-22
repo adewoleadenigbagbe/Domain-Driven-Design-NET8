@@ -15,4 +15,8 @@
      <FrameworkReference Include="Microsoft.AspNetCore.App" />
    </ItemGroup>
 
+   <ItemGroup>
+     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.9.0" />
+   </ItemGroup>
+
 </Project>

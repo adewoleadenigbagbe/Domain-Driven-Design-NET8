@@ -6,6 +6,7 @@ using App.Infastructure.BasicResults;
 using App.Data.Entities;
 using App.Data.Contexts;
 using App.Data.Helpers;
+using AutoMapper;
 
 namespace App.Infastructure.Commands
 {
@@ -41,26 +42,24 @@ namespace App.Infastructure.Commands
         }
 
 
-        public class Handler(ReadWriteAppContext readWriteAppContext) : IRequestHandler<Request, Result>
+        public class Handler(ReadWriteAppContext readWriteAppContext, IMapper mapper) : IRequestHandler<Request, Result>
         {
             private readonly ReadWriteAppContext _readWriteAppContext = readWriteAppContext;
+
+            private readonly IMapper _mapper = mapper;
 
             public async Task<Result> Handle(Request request, CancellationToken cancellationToken)
             {
                 var id = SequentialGuid.Create();
                 var now = DateTime.Now;
 
-                var product = new Product
-                {
-                    Id = id,
-                    Name = request.Name,
-                    Vat = request.Vat,
-                    Category = request.Category,
-                    Price = request.Price,
-                    IsDeprecated = false,
-                    CreatedOn = now,
-                    ModifiedOn = now
-                };
+                //map here
+                var product = _mapper.Map<Product>(request);
+                product.Id = SequentialGuid.Create();
+                product.CreatedOn = now;
+                product.ModifiedOn = now;
+                product.IsDeprecated = true;
+
 
                 _readWriteAppContext.Products.Add(product);
 

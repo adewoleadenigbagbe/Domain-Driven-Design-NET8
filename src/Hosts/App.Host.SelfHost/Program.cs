@@ -7,9 +7,19 @@ namespace App.Host.SelfHost
     {
         static void Main(string[] args)
         {
+            const string baseAddress = "http://localhost:9060/";
+
             var builder = WebApplication.CreateBuilder(args);
+
+            Startup.ConfigureServices(builder.Services);
+
             var app = builder.Build();
-            WebApp.Configure(app);
+
+            Startup.Configure(app);
+
+            app.MapControllers();
+
+            app.Run(baseAddress);
         }
     }
 }
