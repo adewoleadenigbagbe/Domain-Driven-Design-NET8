@@ -17,8 +17,6 @@ namespace App.Host.SelfHost
 
             Startup.Configure(app);
 
-            app.MapControllers();
-
             app.Run(baseAddress);
         }
     }

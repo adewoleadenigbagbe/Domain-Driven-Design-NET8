@@ -22,6 +22,8 @@ namespace App.Host.SystemWeb
             }
 
             app.UseStaticFiles();
+
+            app.MapControllers();
         }
 
 
