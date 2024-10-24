@@ -1,8 +1,7 @@
 ﻿using App.Api.Controllers;
+using App.Api.Filters;
 using App.Host.Configuration;
-using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -10,20 +9,28 @@ namespace App.Host.SystemWeb
 {
     public class Startup
     {
-        public static void Configure(IApplicationBuilder applicationBuilder)
+        public static void Configure(WebApplication app)
         {
-            applicationBuilder.UseCors();
+            app.UseCors();
 
-            applicationBuilder.UseSwagger();
-            applicationBuilder.UseSwaggerUI();
+            app.UseSwagger();
+            app.UseSwaggerUI();
 
-            applicationBuilder.UseStaticFiles();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseStaticFiles();
         }
 
 
         public static void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers().AddApplicationPart(typeof(ProductController).Assembly);
+            services.AddControllers(opt =>
+            {
+                opt.Filters.Add<ValidateModel>();
+            }).AddApplicationPart(typeof(ProductController).Assembly);
 
             services.AddEndpointsApiExplorer();
 
@@ -31,6 +38,5 @@ namespace App.Host.SystemWeb
 
             ServiceRegistration.Register(services);
         }
-
     }
 }

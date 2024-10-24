@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 using App.Infastructure.Commands;
 using App.Infastructure.Queries.Products;
+using App.Api.Filters;
 
 namespace App.Api.Controllers
 {
@@ -13,7 +14,7 @@ namespace App.Api.Controllers
         private readonly IMediator _mediator = mediator;
 
         [HttpPost("")]
-        //[ValidationModel]
+        [ServiceFilter(typeof(ValidateModel))]
         public async Task<IActionResult> CreateProductAsync([FromBody]CreateProduct.Request request)
         {
             var response = await _mediator.Send(request);
