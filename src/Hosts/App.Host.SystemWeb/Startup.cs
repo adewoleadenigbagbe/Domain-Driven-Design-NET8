@@ -1,9 +1,13 @@
 ﻿using App.Api.Controllers;
+using App.Api.Converters;
 using App.Api.Filters;
 using App.Host.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json.Serialization;
+using System.ComponentModel;
 
 namespace App.Host.SystemWeb
 {
@@ -32,11 +36,19 @@ namespace App.Host.SystemWeb
             services.AddControllers(opt =>
             {
                 opt.Filters.Add<ValidateModel>();
-            }).AddApplicationPart(typeof(ProductController).Assembly);
+            })
+            .AddNewtonsoftJson(opt =>
+            {
+                opt.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                opt.SerializerSettings.Converters.Add(new TrimConverter());
+            })
+            .AddApplicationPart(typeof(ProductController).Assembly);
 
             services.AddEndpointsApiExplorer();
 
             services.AddSwaggerGen();
+
+            services.AddCors();
 
             ServiceRegistration.Register(services);
         }
