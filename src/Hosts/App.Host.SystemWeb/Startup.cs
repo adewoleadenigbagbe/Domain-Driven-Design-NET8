@@ -2,23 +2,24 @@
 using App.Api.Converters;
 using App.Api.Filters;
 using App.Host.Configuration;
+
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Serialization;
-using System.ComponentModel;
 
 namespace App.Host.SystemWeb
 {
     public class Startup
     {
-        public static void Configure(WebApplication app)
+        public static void ConfigureApp(WebApplication app)
         {
             app.UseCors();
 
             app.UseSwagger();
             app.UseSwaggerUI();
+
 
             if (app.Environment.IsDevelopment())
             {
@@ -51,6 +52,13 @@ namespace App.Host.SystemWeb
             services.AddCors();
 
             ServiceRegistration.Register(services);
+        }
+
+        public static void ConfigureAppSettings(IConfigurationBuilder config, string[] args)
+        {
+           config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+             .AddEnvironmentVariables()
+             .AddCommandLine(args);
         }
     }
 }

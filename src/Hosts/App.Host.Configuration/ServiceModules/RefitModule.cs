@@ -19,7 +19,7 @@ namespace App.Host.Configuration.ServiceModules
         private static readonly NameValueCollection _connectionStrings = ConfigurationManager.AppSettings;
         public static void RegisterRefitServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddRefitClient<ICountryApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri(_connectionStrings["Country.Url"]));
+            serviceCollection.AddRefitClient<ICountryApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri(_connectionStrings["CountryUrl"]));
         }
     }
 }

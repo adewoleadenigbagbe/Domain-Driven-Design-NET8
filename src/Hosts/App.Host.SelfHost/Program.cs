@@ -11,11 +11,13 @@ namespace App.Host.SelfHost
 
             var builder = WebApplication.CreateBuilder(args);
 
+            Startup.ConfigureAppSettings(builder.Configuration, args);
+
             Startup.ConfigureServices(builder.Services);
 
             var app = builder.Build();
 
-            Startup.Configure(app);
+            Startup.ConfigureApp(app);
 
             app.Run(baseAddress);
         }

@@ -16,4 +16,13 @@
     <ProjectReference Include="..\..\Shared\App.Data.MySQL\App.Data.MySQL.csproj" />
     <ProjectReference Include="..\..\Shared\App.Data\App.Data.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.Development.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
