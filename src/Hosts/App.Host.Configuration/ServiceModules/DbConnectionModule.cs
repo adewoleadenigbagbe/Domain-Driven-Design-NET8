@@ -1,5 +1,6 @@
 ﻿using App.Data.Contexts;
 using App.Data.MySQL;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;

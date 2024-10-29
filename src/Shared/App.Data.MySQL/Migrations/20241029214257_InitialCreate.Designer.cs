@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Data.MySQL.Migrations
 {
     [DbContext(typeof(MySqlReadWriteAppContext))]
-    [Migration("20241028215410_InitialCreate")]
+    [Migration("20241029214257_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

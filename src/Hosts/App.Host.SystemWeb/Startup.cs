@@ -56,9 +56,10 @@ namespace App.Host.SystemWeb
 
         public static void ConfigureAppSettings(IConfigurationBuilder config, string[] args)
         {
-           config.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+            config.SetBasePath(Directory.GetCurrentDirectory())
+             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
              .AddEnvironmentVariables()
-             .AddCommandLine(args);
+             .AddCommandLine(args).Build();
         }
     }
 }
