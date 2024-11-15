@@ -53,13 +53,17 @@ namespace App.Infastructure.Commands
                 var id = SequentialGuid.Create();
                 var now = DateTime.Now;
 
-                //map here
-                var product = _mapper.Map<Product>(request);
-                product.Id = SequentialGuid.Create();
-                product.CreatedOn = now;
-                product.ModifiedOn = now;
-                product.IsDeprecated = true;
-
+                var product = new Product
+                {
+                    Id = SequentialGuid.Create(),
+                    CreatedOn = now,
+                    ModifiedOn = now,
+                    Vat = request.Vat,
+                    Price = request.Price,
+                    Name = request.Name,
+                    Category = request.Category,
+                    IsDeprecated = false
+                };
 
                 _readWriteAppContext.Products.Add(product);
 

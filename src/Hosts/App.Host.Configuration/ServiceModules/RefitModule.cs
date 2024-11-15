@@ -11,15 +11,25 @@ using System.Text;
 using System.Threading.Tasks;
 
 using App.Infastructure.Refits;
+using Microsoft.Extensions.Configuration;
 
 namespace App.Host.Configuration.ServiceModules
 {
     public static class RefitModule
     {
-        private static readonly NameValueCollection _connectionStrings = ConfigurationManager.AppSettings;
+        private static readonly IConfiguration _configuration;
+        static RefitModule()
+        {
+            var builder = new ConfigurationBuilder()
+                        .AddJsonFile("appsettings.json");
+
+            _configuration = builder.Build();
+        }
+
         public static void RegisterRefitServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddRefitClient<ICountryApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri(_connectionStrings["CountryUrl"]));
+            var appSettingsSection = _configuration.GetSection("AppSettings");
+            serviceCollection.AddRefitClient<ICountryApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri(appSettingsSection["CountryUrl"]!));
         }
     }
 }

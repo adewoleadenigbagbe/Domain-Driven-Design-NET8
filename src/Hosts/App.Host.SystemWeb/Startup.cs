@@ -34,6 +34,7 @@ namespace App.Host.SystemWeb
 
         public static void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<ValidateModel>();
             services.AddControllers(opt =>
             {
                 opt.Filters.Add<ValidateModel>();

@@ -12,9 +12,9 @@ namespace App.Api.Controllers
         private readonly IMediator _mediator = mediator;
 
         [HttpGet("population/cities")]
-        public async Task<IActionResult> GetCityPopulation([FromBody] GetCityPopulation.Query request)
+        public async Task<IActionResult> GetCityPopulation()
         {
-            request ??= new GetCityPopulation.Query();
+            var request = new GetCityPopulation.Query();
             var response = await _mediator.Send(request);
             return Ok(response);
         }

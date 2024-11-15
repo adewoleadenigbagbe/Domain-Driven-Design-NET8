@@ -17,7 +17,7 @@ namespace App.Infastructure.Refits
 
     public class CountryResponse
     {
-        public string Error { get; set; }
+        public bool Error { get; set; }
 
         [JsonProperty("msg")]
         public string Message { get; set; }

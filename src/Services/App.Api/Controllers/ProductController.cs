@@ -30,9 +30,9 @@ namespace App.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetProductById([FromRoute]Guid id, [FromBody]GetProductById.Query request)
+        public async Task<IActionResult> GetProductById([FromRoute]Guid id)
         {
-            request ??= new GetProductById.Query();
+            var request = new GetProductById.Query();
             request.Id = id;
             var response = await _mediator.Send(request);
             return Ok(response);
