@@ -31,7 +31,6 @@ namespace App.Data.MySQL
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            Console.WriteLine("the connection string : {0}", _connectionString);
             optionsBuilder.UseMySQL(_connectionString);
         }
     }

@@ -23,6 +23,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Export", "src\Tools\App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "App.Host.WebHost", "src\Hosts\App.Host.SelfHost\App.Host.WebHost.csproj", "{7156D05C-4299-42AE-8D9D-4CF3FDC63E9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.Infastructure.Tests", "tests\Components\App.Infastructure.Tests\App.Infastructure.Tests.csproj", "{342307B0-0C62-4CC8-A047-B6A2338D0227}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.TestContainer.MySQL", "tests\App.TestContainer.MySQL\App.TestContainer.MySQL.csproj", "{CCF43EE9-482A-4C2A-B15B-2A75CB56109E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +73,14 @@ Global
 		{7156D05C-4299-42AE-8D9D-4CF3FDC63E9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7156D05C-4299-42AE-8D9D-4CF3FDC63E9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7156D05C-4299-42AE-8D9D-4CF3FDC63E9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{342307B0-0C62-4CC8-A047-B6A2338D0227}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{342307B0-0C62-4CC8-A047-B6A2338D0227}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{342307B0-0C62-4CC8-A047-B6A2338D0227}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{342307B0-0C62-4CC8-A047-B6A2338D0227}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCF43EE9-482A-4C2A-B15B-2A75CB56109E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCF43EE9-482A-4C2A-B15B-2A75CB56109E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCF43EE9-482A-4C2A-B15B-2A75CB56109E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCF43EE9-482A-4C2A-B15B-2A75CB56109E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
