@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\src\Components\App.Infastructure\App.Infastructure.csproj" />
     <ProjectReference Include="..\..\App.TestContainer.MySQL\App.TestContainer.MySQL.csproj" />
   </ItemGroup>
 

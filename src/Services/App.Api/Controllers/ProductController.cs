@@ -15,14 +15,14 @@ namespace App.Api.Controllers
 
         [HttpPost("")]
         [ServiceFilter(typeof(ValidateModel))]
-        public async Task<IActionResult> CreateProductAsync([FromBody]CreateProduct.Request request)
+        public async Task<IActionResult> CreateProductAsync([FromBody] CreateProduct.Request request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);
         }
 
         [HttpGet("")]
-        public async Task<IActionResult> GetProductsAsync([FromBody]GetProducts.Query request)
+        public async Task<IActionResult> GetProductsAsync([FromQuery]GetProducts.Query request)
         {
             request ??=  new GetProducts.Query();
             var response = await _mediator.Send(request);

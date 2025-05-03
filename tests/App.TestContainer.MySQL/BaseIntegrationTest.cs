@@ -13,13 +13,15 @@ namespace App.TestContainer.MySQL
     public class BaseIntegrationTest : IClassFixture<IntegrationWebTestFactory>
     {
         protected readonly IServiceScope _scope;
-        protected readonly ApplicationDbContext _context;
+        protected readonly ReadAppContext _readAppContext;
+        protected readonly ReadWriteAppContext _readWriteAppContext;
+
 
         public BaseIntegrationTest(IntegrationWebTestFactory factory)
         {
             _scope = factory.Services.CreateScope();
-            _context = _scope.ServiceProvider.GetService<ApplicationDbContext>();
-
+            _readAppContext = _scope.ServiceProvider.GetService<ReadAppContext>();
+            _readWriteAppContext = _scope.ServiceProvider.GetService<ReadWriteAppContext>();
         }
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Respawn;
 using Testcontainers.MySql;
 using Xunit;
 
@@ -20,14 +21,27 @@ namespace App.TestContainer.MySQL
             .WithPassword("P@ssw0r1d")
             .Build();
 
+        private Respawner _respawner = null!;
+
         public async Task InitializeAsync()
         {
             await _container.StartAsync();
+
+            _respawner = await Respawner.CreateAsync(_container.GetConnectionString(), new RespawnerOptions
+            {
+                DbAdapter = DbAdapter.Postgres,
+                SchemasToInclude = new[] { "public" }
+            });
         }
 
         public new async Task DisposeAsync()
         {
             await _container.DisposeAsync();
+        }
+
+        public async Task ResetDatabase()
+        {
+            await _respawner.ResetAsync(_container.GetConnectionString());
         }
 
         protected override void ConfigureWebHost(IWebHostBuilder builder)
